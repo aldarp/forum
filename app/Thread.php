@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
 {
+    use recordsActivity;
+
     protected $guarded = [];
 
     protected $with = ['creator', 'channel'];
