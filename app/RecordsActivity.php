@@ -18,8 +18,13 @@ trait RecordsActivity
         static::$event(function ($model) use ($event) {
             $model->recordActivity($event);
             });
-        };
+        }
+
+        static::deleting(function ($model) {
+            $model->activity()->delete();
+        });
     }
+
 
     protected static function getActivitiesToRecord()
     {
