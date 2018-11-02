@@ -42,7 +42,7 @@ class ThreadsController extends Controller
      */
     public function create()
     {
-        return view('threads.create');
+        return view('threads.create', ['channels'  => Channel::all()]);
     }
 
     /**
@@ -59,6 +59,8 @@ class ThreadsController extends Controller
             'channel_id' => 'required|exists:channels,id'
         ]);
 
+
+
         $thread = Thread::create([
            'user_id' => auth()->id(),
            'channel_id' => request('channel_id'),
@@ -66,7 +68,8 @@ class ThreadsController extends Controller
            'body' => request('body')
         ]);
 
-        return redirect($thread->path());
+        return redirect($thread->path())
+            ->with('flash', 'Your thread has been published!');
     }
 
     /**
