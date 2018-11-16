@@ -46,11 +46,12 @@ class Thread extends Model
     }
 
     /**
-     * @param $reply
+     * @param array $reply
+     * @return Reply
      */
     public function addReply($reply)
     {
-        $this->replies()->create($reply);
+        return $this->replies()->create($reply);
     }
 
     public function scopeFilter($query, $filters)
