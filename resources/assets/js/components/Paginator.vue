@@ -1,7 +1,7 @@
 <template>
     <ul class="pagination" v-if="shouldPaginate">
         <li v-show="prevUrl">
-            <a href="#" aria-label="Previous" rel="previous" @click.prevent="page--">
+            <a href="#" aria-label="Previous" rel="prev" @click.prevent="page--">
                 <span aria-hidden="true">&laquo; Previous</span>
             </a>
         </li>
@@ -16,38 +16,32 @@
 <script>
     export default {
         props: ['dataSet'],
-        
         data() {
             return {
                 page: 1,
                 prevUrl: false,
-                nextUrl: false,
+                nextUrl: false
             }
         },
-
         watch: {
             dataSet() {
                 this.page = this.dataSet.current_page;
                 this.prevUrl = this.dataSet.prev_page_url;
                 this.nextUrl = this.dataSet.next_page_url;
             },
-
             page() {
                 this.broadcast().updateUrl();
             }
         },
-
         computed: {
             shouldPaginate() {
                 return !! this.prevUrl || !! this.nextUrl;
             }
         },
-
         methods: {
             broadcast() {
                 return this.$emit('changed', this.page);
             },
-
             updateUrl() {
                 history.pushState(null, null, '?page=' + this.page);
             }

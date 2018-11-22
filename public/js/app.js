@@ -29388,6 +29388,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -29396,13 +29398,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-
     computed: {
         signedIn: function signedIn() {
             return window.App.signedIn;
         }
     },
-
     methods: {
         addReply: function addReply() {
             var _this = this;
@@ -29411,9 +29411,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var data = _ref.data;
 
                 _this.body = '';
-
                 flash('Your reply has been posted.');
-
                 _this.$emit('created', data);
             });
         }
@@ -29444,7 +29442,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['dataSet'],
-
     data: function data() {
         return {
             page: 1,
@@ -29452,7 +29449,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             nextUrl: false
         };
     },
-
 
     watch: {
         dataSet: function dataSet() {
@@ -29464,13 +29460,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.broadcast().updateUrl();
         }
     },
-
     computed: {
         shouldPaginate: function shouldPaginate() {
             return !!this.prevUrl || !!this.nextUrl;
         }
     },
-
     methods: {
         broadcast: function broadcast() {
             return this.$emit('changed', this.page);
@@ -29504,25 +29498,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: { Reply: __WEBPACK_IMPORTED_MODULE_0__Reply_vue___default.a, NewReply: __WEBPACK_IMPORTED_MODULE_1__NewReply_vue___default.a },
-
     mixins: [__WEBPACK_IMPORTED_MODULE_2__mixins_collection__["a" /* default */]],
-
     data: function data() {
-        return {
-            dataSet: false
-        };
+        return { dataSet: false };
     },
     created: function created() {
         this.fetch();
     },
-
 
     methods: {
         fetch: function fetch(page) {
@@ -29531,7 +29519,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         url: function url(page) {
             if (!page) {
                 var query = location.search.match(/page=(\d+)/);
-
                 page = query ? query[1] : 1;
             }
             return location.pathname + '/replies?page=' + page;
@@ -29591,7 +29578,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -29605,7 +29591,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             body: this.data.body
         };
     },
-
 
     computed: {
         ago: function ago() {
@@ -29622,7 +29607,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
         }
     },
-
     methods: {
         update: function update() {
             axios.patch('/replies/' + this.data.id, {
@@ -29633,7 +29617,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         destroy: function destroy() {
             axios.delete('/replies/' + this.data.id);
-
             this.$emit('deleted', this.data.id);
         }
     }
@@ -29795,7 +29778,7 @@ if (token) {
 
     methods: {
         add: function add(item) {
-            this.items.push(reply);
+            this.items.push(item);
 
             this.$emit('added');
         },
@@ -60611,7 +60594,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "href": "#",
       "aria-label": "Previous",
-      "rel": "previous"
+      "rel": "prev"
     },
     on: {
       "click": function($event) {
@@ -60789,11 +60772,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("Post")])]) : _c('p', {
     staticClass: "text-center"
-  }, [_vm._v("\n            Please"), _c('a', {
+  }, [_vm._v("\n        Please "), _c('a', {
     attrs: {
       "href": "/login"
     }
-  }, [_vm._v(" sign in")]), _vm._v(" to participate in this discussion.\n        ")])])
+  }, [_vm._v("sign in")]), _vm._v(" to participate in this\n        discussion.\n    ")])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {

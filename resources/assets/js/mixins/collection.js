@@ -7,7 +7,7 @@ export default {
 
     methods: {
         add(item) {
-            this.items.push(reply);
+            this.items.push(item);
 
             this.$emit('added');
         },
