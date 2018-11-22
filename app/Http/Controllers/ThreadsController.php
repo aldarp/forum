@@ -75,16 +75,13 @@ class ThreadsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param $channelId
+     * @param integer $channel
      * @param  \App\Thread $thread
      * @return \Illuminate\Http\Response
      */
     public function show($channel, Thread $thread)
     {
-        return view('threads.show', [
-            'thread' => $thread,
-            'replies' => $thread->replies()->paginate(20)
-        ]);
+        return view('threads.show', compact('thread'));
     }
 
     public function destroy($channel, Thread $thread)
