@@ -66,6 +66,7 @@ class ThreadTest extends TestCase
         $this->assertInstanceOf('App\Channel', $thread->channel);
     }
 
+
     /** @test */
     function a_thread_can_be_subscribed_to()
     {
